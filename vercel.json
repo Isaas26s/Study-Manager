@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/((?!assets|icon-|favicon|sw\\.js|workbox-).*)", "destination": "/index.html" }
+  ],
   "crons": [
     {
       "path": "/api/keep-alive",

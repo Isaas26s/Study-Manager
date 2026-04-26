@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
-export default defineConfig(({command}) => ({
+export default defineConfig({
   plugins: [
     react(),
     // Remove crossorigin for Electron compatibility
@@ -71,12 +71,12 @@ export default defineConfig(({command}) => ({
     }),
   ],
   // Use './' for Electron (file:// protocol), '/' for web/PWA deploy
-  base: command === 'serve' ? '/' : './',
+  base: process.env.ELECTRON_BUILD ? './' : '/',
   build: {
     outDir: 'dist',
   },
   server: {
     port: 5173,
   },
-}))
+})
 

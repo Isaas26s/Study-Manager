@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "concurrently \"vite --port 5173\" \"wait-on http://localhost:5173 && electron .\"",
     "build": "tsc -b && vite build",
-    "build:electron": "npm run build && electron-builder",
+    "build:electron": "set ELECTRON_BUILD=true && npm run build && electron-builder",
     "lint": "eslint .",
     "preview": "vite preview"
   },
