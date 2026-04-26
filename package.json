@@ -1,0 +1,75 @@
+{
+  "name": "study-manager",
+  "productName": "Study Manager",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Cybersecurity Study Planner & Video Course Manager",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "concurrently \"vite --port 5173\" \"wait-on http://localhost:5173 && electron .\"",
+    "build": "tsc -b && vite build",
+    "build:electron": "npm run build && electron-builder",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.studymanager.app",
+    "productName": "Study Manager",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*.cjs",
+      "public/**/*"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/better-sqlite3/**/*",
+      "node_modules/bindings/**/*",
+      "node_modules/file-uri-to-path/**/*",
+      "node_modules/prebuild-install/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Study Manager"
+    },
+    "npmRebuild": true
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.104.1",
+    "better-sqlite3": "^12.9.0",
+    "lucide-react": "^1.8.0",
+    "pdfjs-dist": "^4.10.38",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^7.14.2",
+    "vite-plugin-pwa": "^0.21.1"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.0.4",
+    "@eslint/js": "^9.39.4",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "concurrently": "^9.2.1",
+    "electron": "^41.2.2",
+    "electron-builder": "^26.8.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.5.0",
+    "png-to-ico": "^3.0.1",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.58.2",
+    "vite": "^8.0.9",
+    "wait-on": "^9.0.5"
+  }
+}
